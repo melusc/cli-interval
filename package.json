@@ -13,15 +13,24 @@
     "prettier": "^2.3.0",
     "xo": "^0.40.1"
   },
+  "files": [
+    "index.js"
+  ],
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
+  "keywords": [
+    "interval",
+    "cli",
+    "cli-app"
+  ],
   "license": "MIT",
   "main": "index.js",
   "name": "@lusc/cli-interval",
   "publishConfig": {
     "access": "public"
   },
+  "repository": "melusc/cli-interval",
   "scripts": {
     "lint": "prettier -w *.js && xo --fix",
     "test": "xo"

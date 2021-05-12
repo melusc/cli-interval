@@ -28,4 +28,6 @@ It will aggregates both `stdout` and `stderr` over time, and pipes them into its
   - `-t 2m` every 2 minutes
   - `-t 1h` every hour
 
+---
+
 This is a fork of [Tabcorp/cli-interval](https://github.com/Tabcorp/cli-interval).
