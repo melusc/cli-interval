@@ -13,15 +13,18 @@
     "prettier": "^2.3.0",
     "xo": "^0.40.1"
   },
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
   "license": "MIT",
   "main": "index.js",
   "name": "@lusc/cli-interval",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "lint": "prettier -w *.js && xo --fix",
     "test": "xo"
-  },
-  "engines": {
-    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
   "type": "module",
   "version": "0.0.0"
