@@ -4,7 +4,7 @@ Repeat a command at a given interval, and aggregate its output.
 
 [![NPM](http://img.shields.io/npm/v/@lusc/cli-interval.svg?style=flat)](https://npmjs.org/package/@lusc/cli-interval)
 [![License](http://img.shields.io/npm/l/@lusc/cli-interval.svg?style=flat)](https://github.com/melusc/cli-interval)
-[![Dependencies](https://img.shields.io/david/melusc/cli-interval)](https://david-dm.org/TabDigital/cli-interval)
+[![Dependencies](https://img.shields.io/david/melusc/cli-interval)](https://david-dm.org/melusc/cli-interval)
 
 ```bash
 npm install -g cli-interval
