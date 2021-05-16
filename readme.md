@@ -7,7 +7,7 @@ Repeat a command at a given interval, and aggregate its output.
 [![Dependencies](https://img.shields.io/david/melusc/cli-interval)](https://david-dm.org/melusc/cli-interval)
 
 ```bash
-npm install -g cli-interval
+npm install -g @lusc/cli-interval
 ```
 
 The following example outputs "Hello" to `stdout` every second.
