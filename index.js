@@ -23,14 +23,14 @@ const cli = meow(
 		flags: {
 			interval: {
 				type: 'string',
-				alias: 't'
+				alias: 't',
 			},
 			version: {
 				type: 'boolean',
-				alias: 'v'
-			}
-		}
-	}
+				alias: 'v',
+			},
+		},
+	},
 );
 
 if (cli.flags.h || !cli.flags.interval) {
