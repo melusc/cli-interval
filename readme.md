@@ -28,6 +28,7 @@ It waits for the command to finish, waits the specified delay and runs the comma
   - `-t 5s` every 5 seconds
   - `-t 2m` every 2 minutes
   - `-t 1h` every hour
+  - `-t` accepts any value that [ms](https://github.com/vercel/ms) accepts.
 
 ---
 
