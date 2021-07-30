@@ -24,6 +24,7 @@ const cli = meow(
 			interval: {
 				type: 'string',
 				alias: 't',
+				isRequired: true,
 			},
 			version: {
 				type: 'boolean',
@@ -37,7 +38,7 @@ if (cli.flags.h || !cli.flags.interval) {
 	cli.showHelp();
 }
 
-if (cli.version) {
+if (cli.flags.version) {
 	cli.showVersion();
 }
 
