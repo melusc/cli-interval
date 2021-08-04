@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import {exec} from 'node:child_process';
+import process from 'node:process';
 
 import ms from 'ms';
 import meow from 'meow';
