@@ -10,7 +10,7 @@
 	"description": "Run a command at a given interval, and aggregate its output",
 	"devDependencies": {
 		"prettier": "^2.3.2",
-		"xo": "^0.44.0"
+		"xo": "^0.45.0"
 	},
 	"files": [
 		"index.js"
