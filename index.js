@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {exec} from 'node:child_process';
+import {spawn} from 'node:child_process';
 import process from 'node:process';
 
 import ms from 'ms';
@@ -55,13 +55,22 @@ if (!command) {
 }
 
 const intervalFunction = () => {
-	const child = exec(command, error => {
-		if (error) {
-			throw error;
-		}
-
-		setTimeout(intervalFunction, interval);
-	});
+	const child = spawn(command, cli.input.slice(1), {
+		shell: true,
+		cwd: process.cwd(),
+	})
+		.on('close', () => {
+			setTimeout(intervalFunction, interval);
+		})
+		.on('exit', code => {
+			if (code !== 0) {
+				process.exit(code);
+			}
+		})
+		.on('error', error => {
+			console.error(error);
+			process.exit(1);
+		});
 	child.stdout.pipe(process.stdout);
 	child.stderr.pipe(process.stderr);
 };
