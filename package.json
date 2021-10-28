@@ -31,7 +31,7 @@
 	},
 	"repository": "melusc/cli-interval",
 	"scripts": {
-		"lint": "prettier -w *.js *.json && xo --fix",
+		"lint": "prettier -w . && xo --fix",
 		"test": "xo"
 	},
 	"type": "module",
