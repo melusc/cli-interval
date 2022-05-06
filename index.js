@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import {spawn} from 'node:child_process';
-import process from 'node:process';
+import {exec} from 'node:child_process';
+import {exit, stderr, stdin, stdout} from 'node:process';
 
 import ms from 'ms';
 import meow from 'meow';
@@ -38,44 +38,45 @@ const cli = meow(
 	},
 );
 
-if (cli.flags.h || !cli.flags.interval) {
-	cli.showHelp();
-}
-
 if (cli.flags.version) {
 	cli.showVersion();
 }
 
-const command = cli.input[0];
-const interval = ms(cli.flags.interval);
+let interval;
+
+try {
+	interval = ms(cli.flags.interval);
+} catch {}
 
 if (interval === undefined) {
-	throw new Error('ms could not interpret interval-string.');
+	console.error(
+		`Error: Invalid interval "${cli.flags.interval}". See https://github.com/vercel/ms for valid formats.`,
+	);
+	exit(1);
 }
 
-if (!command) {
+if (cli.input.length === 0) {
 	cli.showHelp();
 }
 
 const intervalFunction = () => {
-	const child = spawn(command, cli.input.slice(1), {
-		shell: true,
-		cwd: process.cwd(),
-	})
+	const child = exec(cli.input.join(' '))
 		.on('close', () => {
 			setTimeout(intervalFunction, interval);
 		})
 		.on('exit', code => {
 			if (code !== 0) {
-				process.exit(code);
+				exit(code);
 			}
 		})
 		.on('error', error => {
 			console.error(error);
-			process.exit(1);
+			exit(1);
 		});
-	child.stdout.pipe(process.stdout);
-	child.stderr.pipe(process.stderr);
+
+	child.stdout.pipe(stdout);
+	child.stderr.pipe(stderr);
+	stdin.pipe(child.stdin);
 };
 
 intervalFunction();
