@@ -31,6 +31,9 @@ const cli = meow(
 				type: 'boolean',
 				alias: 'v',
 			},
+			help: {
+				alias: 'h',
+			},
 		},
 	},
 );
