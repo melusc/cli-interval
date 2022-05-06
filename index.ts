@@ -42,7 +42,7 @@ if (cli.flags.version) {
 	cli.showVersion();
 }
 
-let interval;
+let interval: number | undefined;
 
 try {
 	interval = ms(cli.flags.interval);
@@ -66,7 +66,7 @@ const intervalFunction = () => {
 		})
 		.on('exit', code => {
 			if (code !== 0) {
-				exit(code);
+				exit(code ?? 1);
 			}
 		})
 		.on('error', error => {
@@ -74,9 +74,9 @@ const intervalFunction = () => {
 			exit(1);
 		});
 
-	child.stdout.pipe(stdout);
-	child.stderr.pipe(stderr);
-	stdin.pipe(child.stdin);
+	child.stdout!.pipe(stdout);
+	child.stderr!.pipe(stderr);
+	stdin.pipe(child.stdin!);
 };
 
 intervalFunction();

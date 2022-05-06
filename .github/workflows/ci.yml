@@ -24,3 +24,6 @@ jobs:
         run: |
           yarn run fmt
           git --no-pager diff --exit-code
+
+      - name: Build
+        run: yarn build
