@@ -24,15 +24,15 @@ const cli = meow(
 		flags: {
 			interval: {
 				type: 'string',
-				alias: 't',
+				shortFlag: 't',
 				isRequired: true,
 			},
 			version: {
 				type: 'boolean',
-				alias: 'v',
+				shortFlag: 'v',
 			},
 			help: {
-				alias: 'h',
+				shortFlag: 'h',
 			},
 		},
 	},
