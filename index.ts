@@ -38,10 +38,6 @@ const cli = meow(
 	},
 );
 
-if (cli.flags.version) {
-	cli.showVersion();
-}
-
 let interval: number | undefined;
 
 try {
