@@ -42,5 +42,5 @@
 	},
 	"type": "module",
 	"version": "4.0.0",
-	"packageManager": "yarn@3.6.3"
+	"packageManager": "yarn@4.0.0"
 }
