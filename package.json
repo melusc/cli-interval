@@ -9,11 +9,11 @@
 	},
 	"description": "Run a command at a given interval, and aggregate its output",
 	"devDependencies": {
-		"@lusc/tsconfig": "^5.0.0",
+		"@lusc/tsconfig": "^5.1.0",
 		"@types/ms": "^0.7.34",
-		"@types/node": "^20.14.7",
+		"@types/node": "^20.14.9",
 		"prettier": "^3.3.2",
-		"typescript": "^5.5.2",
+		"typescript": "^5.5.3",
 		"xo": "^0.58.0"
 	},
 	"files": [
