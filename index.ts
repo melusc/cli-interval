@@ -2,7 +2,7 @@
 
 import {exec} from 'node:child_process';
 import {
-exit, stderr, stdin, stdout,
+	exit, stderr, stdin, stdout,
 } from 'node:process';
 
 import ms from 'ms';
