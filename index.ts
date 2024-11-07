@@ -1,9 +1,5 @@
-#!/usr/bin/env node
-
 import {exec} from 'node:child_process';
-import {
-	exit, stderr, stdin, stdout,
-} from 'node:process';
+import {exit, stderr, stdin, stdout} from 'node:process';
 
 import ms from 'ms';
 import meow from 'meow';
