@@ -9,12 +9,13 @@
 	},
 	"description": "Run a command at a given interval, and aggregate its output",
 	"devDependencies": {
+		"@lusc/eslint-config": "^1.0.1",
 		"@lusc/tsconfig": "^5.1.0",
 		"@types/ms": "^0.7.34",
 		"@types/node": "^22.7.9",
+		"eslint": "^9.14.0",
 		"prettier": "^3.3.3",
-		"typescript": "^5.6.3",
-		"xo": "^0.59.3"
+		"typescript": "^5.6.3"
 	},
 	"files": [
 		"dist"
@@ -35,8 +36,7 @@
 	},
 	"repository": "melusc/cli-interval",
 	"scripts": {
-		"fmt": "prettier -w . && xo --fix",
-		"test": "xo",
+		"fmt": "prettier -w . && eslint --fix",
 		"build": "tsc",
 		"prepublish": "yarn build"
 	},
