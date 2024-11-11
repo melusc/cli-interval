@@ -1,8 +1,8 @@
 import {exec} from 'node:child_process';
 import {exit, stderr, stdin, stdout} from 'node:process';
 
-import ms from 'ms';
 import meow from 'meow';
+import ms from 'ms';
 
 const cli = meow(
 	`
