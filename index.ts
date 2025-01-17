@@ -39,7 +39,7 @@ const cli = meow(
 let interval: number | undefined;
 
 try {
-	interval = ms(cli.flags.interval);
+	interval = ms(cli.flags.interval as ms.StringValue);
 } catch {}
 
 if (interval === undefined) {
