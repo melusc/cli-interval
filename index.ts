@@ -56,8 +56,13 @@ if (values.version) {
 	await printVersion();
 }
 
-if (values.help || positionals.length === 0 || values.interval === undefined) {
+if (values.help || positionals.length === 0) {
 	printHelp();
+}
+
+if (values.interval === undefined) {
+	console.error('Missing -t, --interval.');
+	exit(1);
 }
 
 let interval: number | undefined;
