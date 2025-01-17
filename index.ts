@@ -1,60 +1,79 @@
 import {exec} from 'node:child_process';
+import {readFile} from 'node:fs/promises';
 import {exit, stderr, stdin, stdout} from 'node:process';
+import {parseArgs} from 'node:util';
 
-import meow from 'meow';
 import ms from 'ms';
 
-const cli = meow(
-	`
-    Usage
-      $ interval <command>
-
-    Options
-      -t, --interval  interval as a number in milliseconds or as a string (1s, 400ms...)
-      -v, --version   Show version and exit
-      -h, --help      Show this help text and exit
-
-    Examples
-      $ interval -t 500ms "echo Hello"
-`,
-	{
-		importMeta: import.meta,
-		flags: {
-			interval: {
-				type: 'string',
-				shortFlag: 't',
-				isRequired: true,
-			},
-			version: {
-				type: 'boolean',
-				shortFlag: 'v',
-			},
-			help: {
-				shortFlag: 'h',
-			},
+const {values, positionals} = parseArgs({
+	allowPositionals: true,
+	options: {
+		help: {
+			default: false,
+			type: 'boolean',
+			short: 'h',
+		},
+		interval: {
+			type: 'string',
+			short: 't',
+		},
+		version: {
+			default: false,
+			type: 'boolean',
+			short: 'v',
 		},
 	},
-);
+});
+
+function printHelp() {
+	console.info(`
+  Usage
+    $ interval <command>
+
+  Options
+    -t, --interval  [required] interval as a number in milliseconds or as a string (1s, 400ms...)
+    -v, --version   Show version and exit
+    -h, --help      Show this help text and exit
+
+  Examples
+    $ interval -t 500ms "echo Hello"
+`);
+	exit(0);
+}
+
+async function printVersion() {
+	const packageJsonRaw = await readFile(
+		new URL('../package.json', import.meta.url),
+		'utf8',
+	);
+	const packageJson = JSON.parse(packageJsonRaw) as {version: string};
+	console.info(packageJson.version);
+	exit(0);
+}
+
+if (values.version) {
+	await printVersion();
+}
+
+if (values.help || positionals.length === 0) {
+	printHelp();
+}
 
 let interval: number | undefined;
 
 try {
-	interval = ms(cli.flags.interval as ms.StringValue);
+	interval = ms(values.interval as ms.StringValue);
 } catch {}
 
 if (interval === undefined) {
 	console.error(
-		`Error: Invalid interval "${cli.flags.interval}". See https://github.com/vercel/ms for valid formats.`,
+		`Error: Invalid interval "${values.interval}". See https://github.com/vercel/ms for valid formats.`,
 	);
 	exit(1);
 }
 
-if (cli.input.length === 0) {
-	cli.showHelp();
-}
-
 const intervalFunction = () => {
-	const child = exec(cli.input.join(' '))
+	const child = exec(positionals.join(' '))
 		.on('close', () => {
 			setTimeout(intervalFunction, interval);
 		})
