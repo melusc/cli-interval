@@ -1,6 +1,6 @@
-import {exec} from 'node:child_process';
+import {spawn} from 'node:child_process';
 import {readFile} from 'node:fs/promises';
-import {exit, stderr, stdin, stdout} from 'node:process';
+import {exit} from 'node:process';
 import {parseArgs} from 'node:util';
 
 import ms from 'ms';
@@ -28,15 +28,16 @@ const {values, positionals} = parseArgs({
 function printHelp() {
 	console.info(`
   Usage
-    $ interval <command>
+    $ interval <options> -- <command>
 
   Options
     -t, --interval  [required] interval as a number in milliseconds or as a string (1s, 400ms...)
     -v, --version   Show version and exit
-    -h, --help      Show this help text and exit
+    -h, --help      Show this help-text and exit
 
   Examples
-    $ interval -t 500ms "echo Hello"
+    $ interval -t 500ms -- echo Hello
+    $ interval -t 500ms -- rm -r abc
 `);
 	exit(0);
 }
@@ -55,7 +56,7 @@ if (values.version) {
 	await printVersion();
 }
 
-if (values.help || positionals.length === 0) {
+if (values.help || positionals.length === 0 || values.interval === undefined) {
 	printHelp();
 }
 
@@ -72,8 +73,10 @@ if (interval === undefined) {
 	exit(1);
 }
 
-const intervalFunction = () => {
-	const child = exec(positionals.join(' '))
+function intervalFunction() {
+	spawn(positionals[0]!, positionals.slice(1), {
+		stdio: 'inherit',
+	})
 		.on('close', () => {
 			setTimeout(intervalFunction, interval);
 		})
@@ -86,10 +89,6 @@ const intervalFunction = () => {
 			console.error(error);
 			exit(1);
 		});
-
-	child.stdout!.pipe(stdout);
-	child.stderr!.pipe(stderr);
-	stdin.pipe(child.stdin!);
-};
+}
 
 intervalFunction();
