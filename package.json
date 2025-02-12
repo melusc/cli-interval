@@ -9,7 +9,7 @@
 	"description": "Run a command at a given interval, and aggregate its output",
 	"devDependencies": {
 		"@lusc/eslint-config": "^4.1.0",
-		"@lusc/tsconfig": "^5.1.0",
+		"@lusc/tsconfig": "^6.0.2",
 		"@types/ms": "^2.1.0",
 		"@types/node": "^22.13.1",
 		"eslint": "^9.20.0",
