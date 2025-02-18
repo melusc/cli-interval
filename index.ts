@@ -43,6 +43,7 @@ function printHelp() {
 }
 
 async function printVersion() {
+	// eslint-disable-next-line security/detect-non-literal-fs-filename
 	const packageJsonRaw = await readFile(
 		new URL('../package.json', import.meta.url),
 		'utf8',
