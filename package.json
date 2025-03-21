@@ -11,8 +11,8 @@
 		"@lusc/eslint-config": "^7.1.0",
 		"@lusc/tsconfig": "^6.0.2",
 		"@types/ms": "^2.1.0",
-		"@types/node": "^22.13.10",
-		"eslint": "^9.22.0",
+		"@types/node": "^22.13.11",
+		"eslint": "^9.23.0",
 		"prettier": "^3.5.3",
 		"typescript": "^5.8.2"
 	},
