@@ -8,13 +8,13 @@
 	},
 	"description": "Run a command at a given interval, and aggregate its output",
 	"devDependencies": {
-		"@lusc/eslint-config": "^7.2.0",
+		"@lusc/eslint-config": "^7.4.1",
 		"@lusc/tsconfig": "^7.0.0",
 		"@types/ms": "^2.1.0",
-		"@types/node": "^22.15.3",
-		"eslint": "^9.26.0",
-		"prettier": "^3.5.3",
-		"typescript": "^5.8.3"
+		"@types/node": "^22.17.2",
+		"eslint": "^9.33.0",
+		"prettier": "^3.6.2",
+		"typescript": "^5.9.2"
 	},
 	"files": [
 		"dist"
@@ -41,5 +41,5 @@
 	},
 	"type": "module",
 	"version": "5.1.0",
-	"packageManager": "yarn@4.9.1"
+	"packageManager": "yarn@4.9.2"
 }
