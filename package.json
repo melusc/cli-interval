@@ -8,11 +8,11 @@
 	},
 	"description": "Run a command at a given interval, and aggregate its output",
 	"devDependencies": {
-		"@lusc/eslint-config": "^8.0.1",
-		"@lusc/tsconfig": "^7.1.0",
+		"@lusc/eslint-config": "^8.1.0",
+		"@lusc/tsconfig": "^7.2.0",
 		"@types/ms": "^2.1.0",
-		"@types/node": "^22.18.10",
-		"eslint": "^9.37.0",
+		"@types/node": "^22.18.11",
+		"eslint": "^9.38.0",
 		"prettier": "^3.6.2",
 		"typescript": "^5.9.3"
 	},
