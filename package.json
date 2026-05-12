@@ -31,9 +31,6 @@
 	"license": "MIT",
 	"main": "index.js",
 	"name": "@lusc/cli-interval",
-	"publishConfig": {
-		"access": "public"
-	},
 	"repository": "melusc/cli-interval",
 	"scripts": {
 		"fmt": "prettier -w . && eslint --fix",
